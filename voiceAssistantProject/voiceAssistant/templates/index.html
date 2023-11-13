@@ -1,0 +1,63 @@
+{% load static %}  <!-- 在模板中使用静态文件前，必须先加载static标签 -->
+<!-- voiceAssistant/templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>语音助手</title>
+        <style>
+            /* 添加CSS来美化页面 */
+            body {
+                text-align: center; /* 居中对齐 */
+                margin-top: 50px; /* 添加顶部边距 */
+            }
+            #recordButton {
+                background-color: #ff3b3b; /* 红色更亮一些 */
+                border: none; /* 移除边框 */
+                color: white;
+                padding: 15px;
+                border-radius: 50%;
+                font-size: 1.2em;
+                cursor: pointer;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+                transition: background-color 0.3s; /* 过渡动画 */
+            }
+
+            #recordButton.recording {
+                background-color: #ff6161; /* 录音时的颜色更深 */
+            }
+            #textInput {
+                width: 50%; /* 输入框宽度 */
+                padding: 10px; /* 输入框内边距 */
+                margin: 20px 0; /* 输入框上下外边距 */
+            }
+            #sendButton {
+                width: 100px; /* 发送按钮宽度 */
+                padding: 10px; /* 发送按钮内边距 */
+                margin-top: 10px; /* 发送按钮顶部外边距 */
+            }
+            .container {
+                display: flex; /* 使用Flexbox进行布局 */
+                justify-content: center; /* 水平居中 */
+                align-items: center; /* 垂直居中 */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <input type="text" id="textInput" placeholder="在此输入文本" />
+            <button id="recordButton">
+                <i class="fa fa-microphone"></i> 录音
+            </button>
+        </div>
+        <div class="container">
+            <button id="sendButton">发送</button>
+        </div>
+        <div class="container">
+            <div id="gptResponse" style="margin-top: 20px; padding: 10px; background-color: #f2f2f2;">等待回复...</div>
+        </div>
+    
+        <!-- 引入JavaScript文件 -->
+        <script src="{% static 'js/main.js' %}"></script>
+    </body>
+    </html>
